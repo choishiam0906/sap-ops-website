@@ -22,23 +22,25 @@ export function DownloadSection() {
         <StaggerContainer className="mx-auto grid max-w-2xl gap-6 md:grid-cols-2">
           {Object.values(DOWNLOAD_LINKS).map((dl) => (
             <StaggerItem key={dl.label}>
-              <a href={dl.href} target="_blank" rel="noopener noreferrer" className="block">
-                <GlassCard className={`relative text-center ${dl.recommended ? "border-sap-bright/40" : ""}`}>
-                  {dl.recommended && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-sap-bright px-3 py-1 text-xs font-medium text-white">
-                      추천
-                    </div>
-                  )}
-                  <Download size={32} className="mx-auto mb-4 text-sap-sky" />
-                  <h3 className="mb-2 text-xl font-semibold text-text-primary">{dl.label}</h3>
-                  <p className="mb-3 text-sm text-text-secondary">{dl.description}</p>
-                  <p className="text-xs text-text-muted">{dl.size}</p>
-                  <div className="mt-4 inline-flex items-center gap-2 rounded-xl bg-sap-bright px-6 py-3 text-sm font-medium text-white transition-all hover:bg-sap-bright/90 hover:shadow-lg hover:shadow-sap-bright/25">
-                    다운로드
-                    <ExternalLink size={14} />
+              <GlassCard hover={false} className={`relative text-center ${dl.recommended ? "border-sap-bright/40" : ""}`}>
+                {dl.recommended && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-sap-bright px-3 py-1 text-xs font-medium text-white">
+                    추천
                   </div>
-                </GlassCard>
-              </a>
+                )}
+                <Download size={32} className="mx-auto mb-4 text-sap-sky" />
+                <h3 className="mb-2 text-xl font-semibold text-text-primary">{dl.label}</h3>
+                <p className="mb-3 text-sm text-text-secondary">{dl.description}</p>
+                <p className="text-xs text-text-muted">{dl.size}</p>
+                <a
+                  href={dl.href}
+                  download
+                  className="mt-4 inline-flex items-center gap-2 rounded-xl bg-sap-bright px-6 py-3 text-sm font-medium text-white transition-all hover:bg-sap-bright/90 hover:shadow-lg hover:shadow-sap-bright/25"
+                >
+                  <Download size={14} />
+                  다운로드
+                </a>
+              </GlassCard>
             </StaggerItem>
           ))}
         </StaggerContainer>

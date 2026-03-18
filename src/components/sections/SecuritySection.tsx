@@ -2,7 +2,6 @@
 
 import { ShieldCheck, BookOpen, Shuffle } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { GlassCard } from "@/components/ui/GlassCard";
 import { GradientText } from "@/components/ui/GradientText";
 import { AnimateInView, StaggerContainer, StaggerItem } from "@/components/ui/AnimateInView";
 import { SECURITY_MODES } from "@/lib/constants";
@@ -15,7 +14,7 @@ const securityIcons: Record<string, LucideIcon> = {
 
 export function SecuritySection() {
   return (
-    <section id="security" className="py-24 px-6">
+    <section id="security" className="py-32 px-6">
       <div className="mx-auto max-w-6xl">
         <AnimateInView className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
@@ -32,9 +31,9 @@ export function SecuritySection() {
             const Icon = securityIcons[mode.icon];
             return (
               <StaggerItem key={mode.id}>
-                <GlassCard className="relative h-full text-center">
+                <div className={`glass-subtle relative h-full rounded-2xl p-6 text-center ${mode.recommended ? "border-sap-bright/40 shadow-lg shadow-sap-bright/5" : ""}`}>
                   {mode.recommended && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-sap-bright px-3 py-1 text-xs font-medium text-white">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-sap-bright px-3 py-1 text-xs font-medium text-white shadow-lg shadow-sap-bright/25">
                       추천
                     </div>
                   )}
@@ -43,12 +42,12 @@ export function SecuritySection() {
                   </div>
                   <h3 className="mb-3 text-xl font-semibold text-text-primary">{mode.name}</h3>
                   <p className="mb-4 text-sm leading-relaxed text-text-secondary">{mode.description}</p>
-                  <div className="rounded-lg bg-bg-secondary/50 px-4 py-3">
+                  <div className="rounded-lg bg-bg-primary/40 px-4 py-3">
                     <p className="mb-1 text-xs font-medium text-text-muted">데이터 흐름</p>
                     <p className="text-xs text-sap-sky font-mono">{mode.flow}</p>
                   </div>
                   <p className="mt-4 text-xs text-text-muted">{mode.useCase}</p>
-                </GlassCard>
+                </div>
               </StaggerItem>
             );
           })}

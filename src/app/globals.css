@@ -28,10 +28,13 @@
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
   /* Animations */
-  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.4s ease-out forwards;
   --animate-float: float 6s ease-in-out infinite;
   --animate-gradient: gradient-shift 8s ease infinite;
   --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-slide-in-left: slide-in-left 0.5s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.5s ease-out forwards;
+  --animate-expand-accordion: expand-accordion 0.3s ease-out forwards;
 }
 
 /* ─── Keyframes ─── */
@@ -76,6 +79,39 @@
   }
 }
 
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes expand-accordion {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
 /* ─── Base Styles ─── */
 html {
   scroll-behavior: smooth;
@@ -102,6 +138,18 @@ body {
   border-color: var(--color-border-glass-hover);
 }
 
+.glass-subtle {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-subtle:hover {
+  background: rgba(15, 23, 42, 0.55);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
 .gradient-text {
   background: linear-gradient(135deg, var(--color-sap-sky), var(--color-sap-bright), var(--color-sap-sky));
   background-size: 200% 200%;
@@ -118,9 +166,37 @@ body {
 .glow-orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.3;
+  filter: blur(40px);
+  opacity: 0.15;
   pointer-events: none;
+}
+
+/* Mockup 브라우저 프레임 */
+.mockup-frame {
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+}
+
+.mockup-frame::before {
+  content: "";
+  display: block;
+  height: 36px;
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+
+.mockup-frame::after {
+  content: "● ● ●";
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.2);
 }
 
 /* ─── Scrollbar ─── */

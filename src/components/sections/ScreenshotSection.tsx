@@ -2,26 +2,15 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, LayoutDashboard, Search, Settings, Monitor } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { GradientText } from "@/components/ui/GradientText";
 import { AnimateInView } from "@/components/ui/AnimateInView";
 import { SCREENSHOTS } from "@/lib/constants";
 
-const screenshotIcons: Record<string, LucideIcon> = {
-  "hero-mockup": Monitor,
-  chat: MessageSquare,
-  cockpit: LayoutDashboard,
-  cbo: Search,
-  settings: Settings,
-};
-
 export function ScreenshotSection() {
   const [activeTab, setActiveTab] = useState(0);
-  const ActiveIcon = screenshotIcons[SCREENSHOTS[activeTab].id] || Monitor;
 
   return (
-    <section id="screenshots" className="py-32 px-6">
+    <section id="screenshots" className="py-24 px-6">
       <div className="mx-auto max-w-6xl">
         <AnimateInView className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
@@ -32,8 +21,8 @@ export function ScreenshotSection() {
           </p>
         </AnimateInView>
 
+        {/* Tabs */}
         <AnimateInView>
-          {/* Tabs */}
           <div className="mb-8 flex justify-center">
             <div className="inline-flex gap-1 rounded-xl bg-bg-secondary/50 p-1">
               {SCREENSHOTS.map((screenshot, index) => (
@@ -52,7 +41,7 @@ export function ScreenshotSection() {
             </div>
           </div>
 
-          {/* Mockup Frame */}
+          {/* Screenshot Display */}
           <div className="relative mx-auto max-w-4xl">
             <AnimatePresence mode="wait">
               <motion.div
@@ -61,32 +50,23 @@ export function ScreenshotSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.3 }}
+                className="overflow-hidden rounded-2xl border border-border-glass"
               >
-                <div className="mockup-frame shadow-2xl shadow-sap-bright/5">
-                  <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-sap-deep/60 to-bg-primary">
-                    <div className="flex flex-col items-center gap-4">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-sap-bright/10">
-                        <ActiveIcon size={28} className="text-sap-sky" />
-                      </div>
-                      <p className="text-lg font-medium text-text-primary">{SCREENSHOTS[activeTab].label}</p>
-                      <p className="text-sm text-text-muted">스크린샷 준비 중이에요</p>
-                      {/* 가상 UI 요소 */}
-                      <div className="mt-2 flex gap-3">
-                        <div className="h-8 w-24 rounded-lg bg-bg-secondary/40" />
-                        <div className="h-8 w-32 rounded-lg bg-sap-bright/10" />
-                        <div className="h-8 w-20 rounded-lg bg-bg-secondary/40" />
-                      </div>
-                      <div className="flex gap-2">
-                        <div className="h-2 w-16 rounded-full bg-bg-secondary/30" />
-                        <div className="h-2 w-24 rounded-full bg-bg-secondary/30" />
-                        <div className="h-2 w-12 rounded-full bg-bg-secondary/30" />
-                      </div>
+                {/* Placeholder screenshot */}
+                <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-bg-secondary to-bg-primary">
+                  <div className="text-center">
+                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-sap-bright/10">
+                      <span className="text-2xl text-sap-sky">
+                        {SCREENSHOTS[activeTab].label.charAt(0)}
+                      </span>
                     </div>
+                    <p className="text-lg font-medium text-text-primary">{SCREENSHOTS[activeTab].label}</p>
+                    <p className="mt-2 text-sm text-text-muted">스크린샷 준비 중이에요</p>
                   </div>
                 </div>
 
                 {/* Caption */}
-                <div className="mt-4 text-center">
+                <div className="border-t border-border-glass bg-bg-secondary/30 px-6 py-4">
                   <p className="text-sm text-text-secondary">{SCREENSHOTS[activeTab].description}</p>
                 </div>
               </motion.div>

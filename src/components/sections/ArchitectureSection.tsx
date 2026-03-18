@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Monitor, Lock, Cpu, Database, Shield, RefreshCw, Search, Bot, Lightbulb } from "lucide-react";
+import { Monitor, Lock, Cpu, Database, Shield, RefreshCw, Search, Bot } from "lucide-react";
 import { GradientText } from "@/components/ui/GradientText";
 import { AnimateInView } from "@/components/ui/AnimateInView";
 
@@ -54,7 +54,7 @@ export function ArchitectureSection() {
   const [activeLayer, setActiveLayer] = useState<string | null>(null);
 
   return (
-    <section id="architecture" className="py-32 px-6">
+    <section id="architecture" className="py-24 px-6">
       <div className="mx-auto max-w-6xl">
         <AnimateInView className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
@@ -67,7 +67,7 @@ export function ArchitectureSection() {
         </AnimateInView>
 
         <AnimateInView className="mx-auto max-w-3xl">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
             {layers.map((layer, index) => (
               <div key={layer.id}>
                 <motion.div
@@ -109,29 +109,16 @@ export function ArchitectureSection() {
 
                 {/* Connection arrow */}
                 {index < layers.length - 1 && (
-                  <div className="flex justify-center py-3">
+                  <div className="flex justify-center py-2">
                     <div className="flex flex-col items-center gap-1">
-                      <div className="h-5 w-px bg-border-glass" />
+                      <div className="h-4 w-px bg-border-glass" />
                       <span className="text-xs text-text-muted">IPC</span>
-                      <div className="h-5 w-px bg-border-glass" />
+                      <div className="h-4 w-px bg-border-glass" />
                     </div>
                   </div>
                 )}
               </div>
             ))}
-          </div>
-
-          {/* 콜아웃 박스 */}
-          <div className="mt-10 flex items-start gap-4 rounded-2xl border border-sap-sky/10 bg-sap-sky/5 px-6 py-5">
-            <Lightbulb size={20} className="mt-0.5 shrink-0 text-sap-sky" />
-            <div>
-              <p className="mb-1 text-sm font-medium text-text-primary">왜 이 아키텍처인가요?</p>
-              <p className="text-sm leading-relaxed text-text-secondary">
-                Electron의 프로세스 격리 모델은 보안에 큰 강점이 있어요. Renderer는 UI만 담당하고,
-                민감한 데이터 처리는 Main Process에서만 이루어져요. contextBridge를 통한 IPC만 허용하기 때문에
-                악의적인 코드가 시스템 자원에 직접 접근할 수 없어요.
-              </p>
-            </div>
           </div>
         </AnimateInView>
       </div>

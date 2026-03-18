@@ -1,11 +1,10 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { FeatureShowcaseSection } from "@/components/sections/FeatureShowcaseSection";
+import { FeaturesSection } from "@/components/sections/FeaturesSection";
 import { SecuritySection } from "@/components/sections/SecuritySection";
 import { ArchitectureSection } from "@/components/sections/ArchitectureSection";
-import { FAQSection } from "@/components/sections/FAQSection";
-import { CapabilitiesSection } from "@/components/sections/CapabilitiesSection";
+import { TechStackSection } from "@/components/sections/TechStackSection";
 import { ScreenshotSection } from "@/components/sections/ScreenshotSection";
 import { DownloadSection } from "@/components/sections/DownloadSection";
 
@@ -15,11 +14,10 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        <FeatureShowcaseSection />
+        <FeaturesSection />
         <SecuritySection />
         <ArchitectureSection />
-        <FAQSection />
-        <CapabilitiesSection />
+        <TechStackSection />
         <ScreenshotSection />
         <DownloadSection />
       </main>

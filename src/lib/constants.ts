@@ -4,7 +4,7 @@ export const APP = {
   version: "6.0.0",
   description:
     "로컬 우선 아키텍처로 SAP 운영 자동화를 안전하게 수행하세요. 다중 LLM 통합, CBO 분석, 3가지 보안 모드를 제공해요.",
-  url: "https://sap-assistant.vercel.app",
+  url: "https://sap-ops-website.vercel.app",
   github: "https://github.com/choishiam0906/sap-ops-website",
   license: "MIT",
 } as const;

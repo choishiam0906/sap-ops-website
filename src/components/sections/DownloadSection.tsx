@@ -34,7 +34,8 @@ export function DownloadSection() {
                 <p className="text-xs text-text-muted">{dl.size}</p>
                 <a
                   href={dl.href}
-                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center gap-2 rounded-xl bg-sap-bright px-6 py-3 text-sm font-medium text-white transition-all hover:bg-sap-bright/90 hover:shadow-lg hover:shadow-sap-bright/25"
                 >
                   <Download size={14} />

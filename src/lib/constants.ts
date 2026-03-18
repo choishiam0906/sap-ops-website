@@ -5,7 +5,7 @@ export const APP = {
   description:
     "로컬 우선 아키텍처로 SAP 운영 자동화를 안전하게 수행하세요. 다중 LLM 통합, CBO 분석, 3가지 보안 모드를 제공해요.",
   url: "https://sap-assistant.vercel.app",
-  github: "https://github.com/nicekid1/sap-ops-bot",
+  github: "https://github.com/choishiam0906/sap-ops-website",
   license: "MIT",
 } as const;
 
@@ -17,20 +17,22 @@ export const NAV_LINKS = [
   { label: "다운로드", href: "#download" },
 ] as const;
 
+const RELEASE_BASE = `${APP.github}/releases/download/v${APP.version}`;
+
 export const DOWNLOAD_LINKS = {
   portable: {
     label: "Portable EXE",
     description: "설치 없이 바로 실행할 수 있어요",
-    size: "~75MB",
+    size: "75MB",
     recommended: true,
-    href: `${APP.github}/releases/latest`,
+    href: `${RELEASE_BASE}/SAP-Assistant-Desktop-Platform-${APP.version}-Portable.exe`,
   },
   installer: {
     label: "NSIS 설치기",
     description: "Windows 프로그램으로 설치해요",
-    size: "~75MB",
+    size: "85MB",
     recommended: false,
-    href: `${APP.github}/releases/latest`,
+    href: `${RELEASE_BASE}/SAP-Assistant-Desktop-Platform-${APP.version}-Setup.exe`,
   },
 } as const;
 
